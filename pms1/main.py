@@ -64,7 +64,7 @@ password_entry = Entry(**entry_style)
 password_entry.grid(row=3, column=1, pady=5, ipady=10)
 
 # Buttons
-generate_password_button = Button(text="Sniff", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG)
+generate_password_button = Button(text="GENPWD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG)
 generate_password_button.grid(row=3, column=3)
 add_button = Button(text="ADD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG, width=46)
 add_button.grid(row=4, column=1, pady=20, columnspan=2)
