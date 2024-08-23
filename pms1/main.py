@@ -7,7 +7,7 @@ from tkinter import *
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title('Panty Manager')
-window.configure(bg="#020617", padx=200, pady=100)
+window.configure(bg="#020617", padx=200, pady=200)
 
 # --- Setup Canvas
 
