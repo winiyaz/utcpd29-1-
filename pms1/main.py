@@ -29,13 +29,17 @@ def save():
 	with open('panty/sniff.txt', "a") as data_file:
 		data_file.write(f"""
 ***************************
-{current_datetime_utc}
+UTC - {current_datetime_utc}
 ---
-Website  = {website} *  
-Email    = {email} *
-Password = {password} *
+* Website  = {website}   
+* Email    = {email} 
+* Password = {password} 
 **************************
 """)
+		website_entry.delete(0, END)
+		password_entry.delete(0, END)
+		email_entry.delete(0, END)
+
 
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
