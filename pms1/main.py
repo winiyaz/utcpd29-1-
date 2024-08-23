@@ -27,15 +27,19 @@ def save():
 	password = password_entry.get()
 	current_datetime_utc = datetime.now(timezone.utc)  # get current data and time UTCTZ
 
-	is_ok = messagebox.askokcancel(title=website, message=f"""
-	Details Entered:
-	website: {website}
-	Email:{email}
-	Password: {password}
-	---
-	Good ? 	
-""")
+	if len(website) == 0 or len(password) ==0:
+		messagebox.showinfo(title="😡FUKR", message="NoEmpty")
+	else:
+		is_ok = messagebox.askokcancel(title=website, message=f"""
+		Details Entered:
+		website: {website}
+		Email:{email}
+		Password: {password}
+		---
+		Good ? 	
+	""")
 
+# --- Validation
 	if is_ok:
 		with open('panty/sniff.txt', "a") as data_file:
 			data_file.write(f"""
@@ -49,6 +53,8 @@ def save():
 	""")
 			website_entry.delete(0, END)
 			password_entry.delete(0, END)
+			window.quit()  # Stops the main event loop
+			window.destroy()  # Destroys the main window
 
 
 # ---------------------------- UI SETUP ------------------------------- #
