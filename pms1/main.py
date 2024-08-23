@@ -33,7 +33,6 @@ label_style = {
 	'font': ('Arial', 20)
 }
 
-
 website_label = Label(text="Website  ", **label_style)
 website_label.grid(row=1, column=0)
 email_label = Label(text="Email/Username  ", **label_style)
@@ -45,7 +44,7 @@ password_label.grid(row=3, column=0)
 
 # Entry styles made into an object that is then being called inside Entry
 entry_style = {
-	'width' : 35,
+	'width': 35,
 	'bg': ENTRYBG,
 	'fg': ENTRYFG,
 	'font': ('Courier', 20),
@@ -60,6 +59,7 @@ website_entry.focus()
 website_entry.grid(row=1, column=1, pady=5, columnspan=2, ipady=10)
 email_entry = Entry(**entry_style)
 email_entry.grid(row=2, column=1, pady=5, columnspan=2, ipady=10)
+email_entry.insert(0, 'booty@sniff.com')
 password_entry = Entry(**entry_style)
 password_entry.grid(row=3, column=1, pady=5, ipady=10)
 
