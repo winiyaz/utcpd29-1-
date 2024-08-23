@@ -12,6 +12,18 @@ INSERT_BACKGROUND = 'hotpink'
 
 # ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
+import secrets
+import string
+
+
+def generate_password(length=22):
+	characters = string.ascii_letters + string.digits + string.punctuation
+	password = ''.join(secrets.choice(characters) for _ in range(length))
+	return password
+
+
+print(generate_password())
+
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
 import os  # For writing directory
@@ -27,7 +39,7 @@ def save():
 	password = password_entry.get()
 	current_datetime_utc = datetime.now(timezone.utc)  # get current data and time UTCTZ
 
-	if len(website) == 0 or len(password) ==0:
+	if len(website) == 0 or len(password) == 0:
 		messagebox.showinfo(title="😡FUKR", message="NoEmpty")
 	else:
 		is_ok = messagebox.askokcancel(title=website, message=f"""
@@ -39,7 +51,7 @@ def save():
 		Good ? 	
 	""")
 
-# --- Validation
+	# --- Validation
 	if is_ok:
 		with open('panty/sniff.txt', "a") as data_file:
 			data_file.write(f"""
@@ -108,7 +120,7 @@ password_entry = Entry(**entry_style)
 password_entry.grid(row=3, column=1, pady=5, ipady=10)
 
 # --- Buttons ---
-generate_password_button = Button(text="GENPWD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG)
+generate_password_button = Button(text="GENPWD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG, command=generate_password)
 generate_password_button.grid(row=3, column=3)
 add_button = Button(text="ADD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG, width=46, command=save)
 add_button.grid(row=4, column=1, pady=20, columnspan=2)
