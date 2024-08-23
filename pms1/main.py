@@ -12,6 +12,31 @@ INSERT_BACKGROUND = 'hotpink'
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
+import os # For writing directory
+from datetime import datetime, timezone # for getting current date and time
+
+
+# Ensure directory called 'panty' is present , if not create
+os.makedirs('panty', exist_ok=True)
+
+
+def save():
+	website = website_entry.get()
+	email = email_entry.get()
+	password = password_entry.get()
+	current_datetime_utc = datetime.now(timezone.utc) # get current data and time UTCTZ
+
+	with open('panty/sniff.txt', "a") as data_file:
+		data_file.write(f"""
+***************************
+{current_datetime_utc}
+---
+Website  = {website} *  
+Email    = {email} *
+Password = {password} *
+**************************
+""")
+
 # ---------------------------- UI SETUP ------------------------------- #
 window = Tk()
 window.title('Panty Manager')
@@ -66,7 +91,7 @@ password_entry.grid(row=3, column=1, pady=5, ipady=10)
 # Buttons
 generate_password_button = Button(text="GENPWD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG)
 generate_password_button.grid(row=3, column=3)
-add_button = Button(text="ADD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG, width=46)
+add_button = Button(text="ADD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG, width=46, command=save)
 add_button.grid(row=4, column=1, pady=20, columnspan=2)
 
 # -- Window Setup ---
