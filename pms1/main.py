@@ -19,10 +19,10 @@ import string
 def generate_password(length=22):
 	characters = string.ascii_letters + string.digits + string.punctuation
 	password = ''.join(secrets.choice(characters) for _ in range(length))
+	password_entry.delete(0, END)
+	password_entry.insert(0, password)
 	return password
 
-
-print(generate_password())
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
@@ -118,6 +118,9 @@ email_entry.grid(row=2, column=1, pady=5, columnspan=2, ipady=10)
 email_entry.insert(0, 'booty@sniff.com')
 password_entry = Entry(**entry_style)
 password_entry.grid(row=3, column=1, pady=5, ipady=10)
+pwd = generate_password()
+password_entry.delete(0, END)
+password_entry.insert(0, pwd)
 
 # --- Buttons ---
 generate_password_button = Button(text="GENPWD", font=('Arial', 15), bg=BUTTONBG, fg=ENTRYFG, command=generate_password)
