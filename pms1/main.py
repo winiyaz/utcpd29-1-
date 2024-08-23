@@ -1,6 +1,11 @@
 # Importing  packages
+import os  # For writing directory
+import secrets
+import string
+from datetime import datetime, timezone  # for getting current date and time
 from tkinter import *
 from tkinter import messagebox
+import pyperclip
 
 # -- Color Constants
 MAINBG = "#020617"
@@ -10,10 +15,8 @@ ENTRYFG = "#F97300"
 BUTTONBG = "#180161"
 INSERT_BACKGROUND = 'hotpink'
 
-# ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
-import secrets
-import string
+# ---------------------------- PASSWORD GENERATOR ------------------------------- #
 
 
 def generate_password(length=22):
@@ -21,13 +24,12 @@ def generate_password(length=22):
 	password = ''.join(secrets.choice(characters) for _ in range(length))
 	password_entry.delete(0, END)
 	password_entry.insert(0, password)
+	pyperclip.copy(password)
 	return password
 
 
 # ---------------------------- SAVE PASSWORD ------------------------------- #
 
-import os  # For writing directory
-from datetime import datetime, timezone  # for getting current date and time
 
 # Ensure directory called 'panty' is present , if not create
 os.makedirs('panty', exist_ok=True)
